@@ -43,10 +43,13 @@ public class PreguntaService {
 
     public List<PreguntaEntity> preguntasAleatoriasPorDificultad(List<PreguntaEntity> dataFiltrada){
         List<PreguntaEntity> preguntasAleatorias = new ArrayList<>();
-        for ( int i = 0 ; i < 4; i++ ){
+        while ( preguntasAleatorias.size() != 4 ){
             Random rand = new Random();
             PreguntaEntity elementoAleatorio = dataFiltrada.get( rand.nextInt( dataFiltrada.size() ) );
-            preguntasAleatorias.add(elementoAleatorio);
+            if ( !preguntasAleatorias.contains(elementoAleatorio) )
+            {
+                preguntasAleatorias.add(elementoAleatorio);
+            }
         }
         return preguntasAleatorias;
     }
